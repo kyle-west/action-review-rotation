@@ -27,7 +27,7 @@ The immediate review schedule. Example: _team1 will review from Today until 3/25
 ## Example usage
 
 ```yml
-- uses: kyle-west/action-review-rotation@v0.2
+- uses: kyle-west/action-review-rotation@v1.0.0
   id: getRev
   with:
     reviewers: kyle-west digital-taco/admin digital-taco/qa
