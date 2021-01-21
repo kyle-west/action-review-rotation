@@ -1,3 +1,5 @@
-# Github Action assign a reviewer based on rotation
+# Review Rotation
 
-TODO: Add good docs and the like
+Github Action that rotates through a list of reviewers for reviewing a PR
+
+_TODO: Add good docs and the like_
