@@ -8,6 +8,11 @@ Date.prototype.getDayOfYear = function() {
   const today = new Date(this.getFullYear(), this.getMonth(), this.getDate());
   return Math.round((today - firstDayOfYear + 86400000) / 86400000) - 1;
 };
+Date.prototype.fromDayOfYear = function(days) {
+  const firstDayOfYear = new Date(this.getFullYear(), 0, 1);
+  return new Date(firstDayOfYear.setDate(firstDayOfYear.getDate() + days))
+};
+const formatFromDayOfYear = (num) => new Date().fromDayOfYear(num).toLocaleDateString()
 
 function parseRotation(rot) {
   if (!rot) return 7
@@ -51,15 +56,25 @@ async function run() {
         getTeam = data.getTeam()
       }
       
-      const dayOfYear = new Date(...dateArgs).getDayOfYear()
-      const reviewer = reviewers[Math.floor(dayOfYear / rotationDays) % reviewers.length]
+      let calendar = ''
 
-      return { reviewer, team: getTeam(reviewer) }
+      const dayOfYear = new Date(...dateArgs).getDayOfYear()
+      const idx = Math.floor(dayOfYear / rotationDays) % reviewers.length
+      const reviewer = reviewers[idx]
+      const lastDayNum = dayOfYear + (rotationDays - (dayOfYear % rotationDays)) - 1
+      calendar += `${reviewer} will review from Today until ${formatFromDayOfYear(lastDayNum)}.`
+      
+      const nextRevIdx = (idx + 1) % reviewers.length
+      const nextReviewer = reviewers[nextRevIdx]
+      calendar += ` ${nextReviewer} will review from ${formatFromDayOfYear(lastDayNum + 1)} until ${formatFromDayOfYear(lastDayNum + 1 + rotationDays)}.`
+
+      return { reviewer, team: getTeam(reviewer), calendar }
     } 
     
-    const { reviewer, team } = await selectTodaysReviewer()
+    const { reviewer, team, calendar } = await selectTodaysReviewer()
 
     core.setOutput('reviewer', reviewer);
+    core.setOutput('calendar', calendar);
     core.setOutput('team', team || reviewer); // default to just the reviewer if no team given
   } catch (error) {
     core.setFailed(error.message);

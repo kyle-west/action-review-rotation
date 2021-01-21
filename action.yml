@@ -19,6 +19,8 @@ outputs:
     description: 'DRI for reviewing the PR'
   team:
     description: 'The team responsible for reviewing the PR'
+  calendar:
+    description: 'The current and next schedule dates'
 runs:
   using: 'node12'
   main: 'index.js'
