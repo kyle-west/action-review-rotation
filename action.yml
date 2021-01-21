@@ -1,5 +1,5 @@
-name: 'Review'
-description: 'Rotate through a list of reviewers for reviewing a PR'
+name: 'Picky Reviewer Rotation'
+description: 'Github Action that rotates through a list of reviewers by a specified interval'
 inputs:
   reviewers:
     description: 'A whitespace separated list of reviewers and/or teams for reviewing'

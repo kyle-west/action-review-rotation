@@ -1,6 +1,6 @@
-# Review Rotation
+# _Picky_ Review Rotation
 
-Github Action that rotates through a list of reviewers for reviewing a PR
+Github Action that rotates through a list of reviewers by a specified interval
 
 ## Inputs
 
