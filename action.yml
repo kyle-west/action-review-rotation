@@ -4,10 +4,12 @@ inputs:
   reviewers:
     description: 'list of reviewers and/or teams for reviewing'
     required: true
+  fetch-team-users:
+    description: 'should the rotation list fetch out members from teams given'
+    required: false
   token:
     description: 'github token to access team members'
-    required: true
-    default: ${{ secrets.GITHUB_TOKEN }}
+    required: false
 outputs:
   reviewer:
     description: 'DRI for reviewing the PR'

@@ -14,11 +14,20 @@ async function run() {
   try {
     const reviewerList = core.getInput('reviewers').split(/\s+/);
     const token = core.getInput('token');
+    const fetchTeamUsers = core.getInput('fetch-team-users') || false;
 
     const selectThisWeeksReviewer = async (...dateArgs) => {
-      const { reviewers, getTeam } = await getReviewers({ token, reviewers: reviewerList })
+      let reviewers = reviewerList.map(x => x.replace(/^@/, '')), getTeam = () => {};
+      
+      if (fetchTeamUsers) {
+        let data = await getReviewers({ token, reviewers: reviewerList })
+        reviewers = data.reviewers
+        getTeam = data.getTeam()
+      }
+      
       const weekNum = new Date(...dateArgs).getWeek()
       const reviewer = reviewers[weekNum % reviewers.length]
+
       return { weekNum, idx: weekNum % reviewers.length, reviewer, team: getTeam(reviewer) }
     } 
     
