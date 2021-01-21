@@ -1,4 +1,4 @@
-# Review Rotation
+# _Picky_ Reviewer Rotation
 
 Github Action that rotates through a list of reviewers for reviewing a PR
 

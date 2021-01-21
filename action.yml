@@ -1,4 +1,4 @@
-name: 'Review'
+name: 'Picky Reviewer Rotation'
 description: 'Rotate through a list of reviewers for reviewing a PR'
 inputs:
   reviewers:
