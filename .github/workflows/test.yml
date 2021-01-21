@@ -17,4 +17,5 @@ jobs:
       id: check
       with:
         reviewers: kyle-west @digital-taco/admins @digital-taco/qas
+        rotation: 4 Weeks
     - run: echo "reviewer is ${{ steps.check.outputs.reviewer }}"
