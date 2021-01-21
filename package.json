@@ -1,6 +1,6 @@
 {
   "name": "action-review-rotation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Rotate through a list of reviewers for reviewing a PR",
   "main": "index.js",
   "repository": {
