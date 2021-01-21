@@ -1,13 +1,18 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Review'
+description: 'Rotate through a list of reviewers for reviewing a PR'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  reviewers:
+    description: 'list of reviewers and/or teams for reviewing'
     required: true
-    default: '1000'
+  token:
+    description: 'github token to access team members'
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  reviewer:
+    description: 'DRI for reviewing the PR'
+  team:
+    description: 'The team responsible for reviewing the PR'
 runs:
   using: 'node12'
   main: 'index.js'
