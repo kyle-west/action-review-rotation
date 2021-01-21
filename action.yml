@@ -2,25 +2,25 @@ name: 'Review'
 description: 'Rotate through a list of reviewers for reviewing a PR'
 inputs:
   reviewers:
-    description: 'list of reviewers and/or teams for reviewing'
+    description: 'A whitespace separated list of reviewers and/or teams for reviewing'
     required: true
   rotation:
-    description: 'frequency of rotation (e.g. "2 days", "4 weeks", "3 months", "1 year")'
+    description: 'The frequency of rotation (e.g. "2 days", "4 weeks", "3 months", "1 year")'
     required: false
     default: '1 week'
   fetch-team-users:
-    description: 'should the rotation list fetch out members from teams given'
+    description: 'Boolean if the rotation list should expand teams to individual members from teams given'
     required: false
   token:
-    description: 'github token to access team members'
+    description: 'A github token to access team members if fetch-team-users is true'
     required: false
 outputs:
   reviewer:
-    description: 'DRI for reviewing the PR'
+    description: 'The assigned reviewer or team'
   team:
-    description: 'The team responsible for reviewing the PR'
+    description: 'The team the reviewer belongs to (if applicable)'
   calendar:
-    description: 'The current and next schedule dates'
+    description: 'The immediate review schedule'
 runs:
   using: 'node12'
   main: 'index.js'
