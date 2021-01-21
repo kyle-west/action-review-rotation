@@ -14,5 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./
+      id: check
       with:
         reviewers: kyle-west @digital-taco/admins @digital-taco/qas
+    - run: echo "reviewer is ${{ steps.check.outputs.reviewer }}"
