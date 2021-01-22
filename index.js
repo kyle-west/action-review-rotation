@@ -36,7 +36,6 @@ function parseRotation(rot) {
     rotInterval = 365
   }
 
-  console.log({ rotNum, rotStr, rotInterval })
   return rotNum * rotInterval
 }
 
@@ -53,7 +52,7 @@ async function run() {
       if (fetchTeamUsers) {
         let data = await getReviewers({ token, reviewers: reviewerList })
         reviewers = data.reviewers
-        getTeam = data.getTeam()
+        getTeam = data.getTeam
       }
       
       let calendar = ''

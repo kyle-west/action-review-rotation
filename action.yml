@@ -1,6 +1,5 @@
 name: 'Picky Reviewer Rotation'
 description: 'Github Action that rotates through a list of reviewers by a specified interval'
-icon: calendar
 inputs:
   reviewers:
     description: 'A whitespace separated list of reviewers and/or teams for reviewing'
